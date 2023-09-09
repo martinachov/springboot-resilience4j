@@ -1,0 +1,22 @@
+
+spring:
+  application.name: resilience4j
+
+management:
+  endpoints.web.exposure.include:
+    - '*'
+  endpoint.health.show-details: always
+  health.circuit-breakers.enabled: true
+
+resilience4j:
+  retry:
+    instances:
+      resilientService:
+        waitDuration: 500
+        maxAttempts: 4
+        retryExceptions:
+          - java.lang.InterruptedException
+
+logging:
+  pattern:
+    console: "%clr(%d{HH:mm:ss.SSS}){blue} %clr(---){magenta} %clr([%15.15t]){cyan} %clr(:){red} %clr(%m){yellow}%n"
