@@ -2,6 +2,8 @@ package com.martinachov.resilience4j;
 
 import com.martinachov.resilience4j.model.Flight;
 import com.martinachov.resilience4j.model.SearchRequest;
+import com.martinachov.resilience4j.runner.RetryPatternRunner;
+import com.martinachov.resilience4j.service.RetryService;
 import com.martinachov.resilience4j.service.mock.FlightSearchService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.SpringApplication;
@@ -15,17 +17,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class Resilience4jApplication {
 
-	private final FlightSearchService service;
-
+	private final RetryPatternRunner retryPatternRunner;
 	public static void main(String[] args) {
 		SpringApplication.run(Resilience4jApplication.class, args);
 	}
 
 	@EventListener(ApplicationReadyEvent.class)
 	public void runExamples() {
-		SearchRequest request = SearchRequest.builder().from("NYC").to("LAX").flightDate("09/09/2023").build();
-		List<Flight> flights = service.searchFlights(request);
-		System.out.println(flights);
-
+		retryPatternRunner.run();
 	}
 }

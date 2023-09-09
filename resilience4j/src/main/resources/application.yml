@@ -11,11 +11,10 @@ management:
 resilience4j:
   retry:
     instances:
-      resilientService:
-        waitDuration: 500
-        maxAttempts: 4
-        retryExceptions:
-          - java.lang.InterruptedException
+      # Retry object used in RetryingService.basicExample()
+      basic:
+        waitDuration: 2s
+        maxAttempts: 3
 
 logging:
   pattern:
