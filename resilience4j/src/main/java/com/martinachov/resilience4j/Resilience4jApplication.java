@@ -2,10 +2,8 @@ package com.martinachov.resilience4j;
 
 import com.martinachov.resilience4j.model.Flight;
 import com.martinachov.resilience4j.model.SearchRequest;
-import com.martinachov.resilience4j.runner.RetryPatternRunner;
 import com.martinachov.resilience4j.service.mock.FlightSearchService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
