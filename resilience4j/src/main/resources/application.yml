@@ -15,6 +15,12 @@ resilience4j:
       basic:
         waitDuration: 2s
         maxAttempts: 3
+      # Retry object used in RetryingService.basicExample_serviceThrowingException()
+      throwingException:
+        waitDuration: 2s
+        maxAttempts: 3
+        retryExceptions:
+          - java.lang.Exception
 
 logging:
   pattern:
