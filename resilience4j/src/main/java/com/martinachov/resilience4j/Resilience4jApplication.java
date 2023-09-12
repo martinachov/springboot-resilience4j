@@ -2,6 +2,7 @@ package com.martinachov.resilience4j;
 
 import com.martinachov.resilience4j.model.Flight;
 import com.martinachov.resilience4j.model.SearchRequest;
+import com.martinachov.resilience4j.runner.RateLimiterRunner;
 import com.martinachov.resilience4j.runner.RetryPatternRunner;
 import com.martinachov.resilience4j.service.RetryService;
 import com.martinachov.resilience4j.service.mock.FlightSearchService;
@@ -18,12 +19,15 @@ import java.util.List;
 public class Resilience4jApplication {
 
 	private final RetryPatternRunner retryPatternRunner;
+	private final RateLimiterRunner rateLimiterRunner;
 	public static void main(String[] args) {
 		SpringApplication.run(Resilience4jApplication.class, args);
 	}
 
 	@EventListener(ApplicationReadyEvent.class)
 	public void runExamples() {
-		retryPatternRunner.run();
+		//retryPatternRunner.run();
+		rateLimiterRunner.run();
+
 	}
 }

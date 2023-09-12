@@ -22,6 +22,14 @@ resilience4j:
         retryExceptions:
           - java.lang.Exception
 
+  ratelimiter:
+    instances:
+      # RateLimiter object used in RateLimitingService.basicExample()
+      basic:
+        limitForPeriod: 1
+        limitRefreshPeriod: 1s
+        timeoutDuration: 1s
+
 logging:
   pattern:
     console: "%clr(%d{HH:mm:ss.SSS}){blue} %clr(---){magenta} %clr([%15.15t]){cyan} %clr(:){red} %clr(%m){yellow}%n"
